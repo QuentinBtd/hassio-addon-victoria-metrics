@@ -4,8 +4,7 @@ The analytics platform for all your metrics.
 
 VictoriaMetrics is a high-performance, scalable time series database known for its efficiency in storing and querying large volumes of metrics data. It's an ideal replacement for Prometheus and InfluxDB, offering advanced data compression and fast query execution. Key features include native Prometheus support, robust querying capabilities, and cost-effective long-term storage solutions. Designed with simplicity and ease of use in mind, VictoriaMetrics provides a reliable platform for monitoring and analytics at scale. Its architecture ensures optimal resource utilization, making it suitable for both small and large-scale deployments.
 
-Combine this add-on with the Grafana add-on to get insanely powerful
-insights to your home.
+Combine this add-on with the Grafana add-on to get insanely powerful insights to your home.
 
 ## Installation
 
