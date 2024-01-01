@@ -187,7 +187,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 [addon-badge]: https://my.home-assistant.io/badges/supervisor_addon.svg
-[addon]: https://my.home-assistant.io/redirect/supervisor_addon/?addon=TO_SET_victoria-metrics&repository_url=https%3A%2F%2Fgithub.com%2FQuentinBtd%2Fhassio-addons
+[addon]: https://my.home-assistant.io/redirect/supervisor_addon/?addon=007da907_victoria-metrics&repository_url=https%3A%2F%2Fgithub.com%2FQuentinBtd%2Fhassio-addons
 [contributors]: https://github.com/QuentinBtd/hassio-addon-victoria-metrics/graphs/contributors
 [QuentinBtd]: https://github.com/QuentinBtd
 [grafana-addon]: https://github.com/hassio-addons/addon-grafana
