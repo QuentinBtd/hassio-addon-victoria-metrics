@@ -1,0 +1,24 @@
+configuration:
+  retention:
+    name: Retention
+    description: Defines the retention in month to store data. You can also use years or days for example `2y` or `30d`.
+  additional_arguments:
+    name: Additional Arguments
+    description: Defines additional arguments, checkout https://github.com/VictoriaMetrics/VictoriaMetrics or the Victoria Metrics documentation.
+  enable_prometheus_scrape:
+    name: Enable Prometheus scrape
+    description: If set to true, a Prometheus scrape configs (Home Assistant et Additional configs) will be configured in Victoria Metrics. 
+  homeassistant_scrape_config:
+    name: Home Assisant scrape config
+    description: Config to scrape Home Assistant. You should 'Edit in YAML'. https://www.home-assistant.io/integrations/prometheus
+  additional_scrape_configs:
+    name: Addotional scrape configs
+    description: You should 'Edit in YAML'.
+  storage_data_path:
+    name: Storage data path
+    description: Where to store Victoria Metrics datas
+  custom_promscape_file:
+    name: Custom promscrape file
+    description: If enabled, `homeassistant_scrape_config` and `additional_scrape_configs` will be ignored.
+  custom_promscape_file_path:
+    name: Custom promscrape file path
