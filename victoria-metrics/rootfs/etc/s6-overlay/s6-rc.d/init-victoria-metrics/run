@@ -1,0 +1,32 @@
+#!/command/with-contenv bashio
+# shellcheck shell=bash
+# ==============================================================================
+# Home Assistant QBR Add-on: Victoria Metrics
+# Configures Victoria Metrics
+# ==============================================================================
+
+
+function generate_template_values() {
+    value=$(echo "$(bashio::config ${1})" | sed 's/^/  /')
+    jq --arg val "${value}" '. + {"'${2}'": $val}' /tmp/promscrape.yaml.values > /tmp/promscrape.yaml.values.tmp && mv /tmp/promscrape.yaml.values.tmp /tmp/promscrape.yaml.values
+
+}
+
+if bashio::config.true 'enable_prometheus_scrape' && bashio::config.false 'custom_promscape_file'; then
+    bashio::log.info "Generate scrape config file for Victoria Metrics"
+    mkdir -p /homeassistant/victoria-metrics/
+
+    echo "{}" > /tmp/promscrape.yaml.values
+
+    generate_template_values global_config globalConfig
+    generate_template_values homeassistant_scrape_config homeassistantScrapeConfig
+    generate_template_values additional_scrape_configs additionalScrapeConfigs
+
+    tempio -conf /tmp/promscrape.yaml.values -template /etc/victoria-metrics/promscrape.yaml.tpl -out /etc/victoria-metrics/promscrape.yaml
+    rm /tmp/promscrape.yaml.values
+
+fi
+
+# Create storage data folder
+bashio::log.info "Create storage data folder $(bashio::config 'storage_data_path')"
+mkdir -p "$(bashio::config 'storage_data_path')"

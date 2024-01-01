@@ -1,0 +1,39 @@
+#!/command/with-contenv bashio
+# shellcheck shell=bash
+# ==============================================================================
+# Home Assistant QBR Add-on: Victoria Metrics
+# Runs Victoria Metrics
+# ==============================================================================
+declare -a options
+declare name
+declare value
+
+bashio::log.info 'Starting Vicotia Metrics...'
+
+# Load custom environment variables
+for var in $(bashio::config 'env_vars|keys'); do
+    name=$(bashio::config "env_vars[${var}].name")
+    value=$(bashio::config "env_vars[${var}].value")
+    bashio::log.info "Setting ${name} to ${value}"
+    export "${name}=${value}"
+done
+
+if bashio::config.true 'enable_prometheus_scrape' && bashio::config.false 'custom_promscape_file'; then
+    options+=(-promscrape.config "/etc/victoria-metrics/promscrape.yaml")
+elif bashio::config.true 'enable_prometheus_scrape' && bashio::config.true 'custom_promscape_file'; then
+    path="$(bashio::config 'custom_promscape_file_path')"
+    if [[ ! -f ${path} ]]; then
+        bashio::log.error "File ${path} does not exists"
+        exit 1
+    fi
+    options+=(-promscrape.config "$(bashio::config 'custom_promscape_file_path')")
+fi
+
+# Add additional arguments
+options+=($(bashio::config 'additional_arguments'))
+options+=(-retentionPeriod "$(bashio::config 'retention')")
+options+=(-storageDataPath "$(bashio::config 'storage_data_path')")
+options+=(-loggerLevel "$(bashio::config 'log_level')")
+
+# Run Vicotoria Metrics
+exec victoria-metrics "${options[@]}"

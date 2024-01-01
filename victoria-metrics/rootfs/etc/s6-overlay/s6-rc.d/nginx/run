@@ -1,0 +1,12 @@
+#!/command/with-contenv bashio
+# ==============================================================================
+# Home Assistant QBR Add-on: Victoria Metrics
+# Runs the Nginx daemon
+# ==============================================================================
+
+# Wait for Victoria Metrics to become available
+bashio::net.wait_for 8428
+
+bashio::log.info "Starting NGINX..."
+
+exec nginx
