@@ -4,7 +4,7 @@ version: dev
 slug: victoria-metrics
 description: Time Series Database for long term storage as replacement for VictoriaMetrics and InfluxDB
 url: https://github.com/QuentinBtd/hassio-addon-victoria-metrics
-# codenotary: codenotary@quentinbertrand.fr 
+# codenotary: codenotary@quentinbertrand.fr
 startup: services
 ingress: true
 ingress_port: 1337
