@@ -14,7 +14,6 @@
 ![Project Maintenance][maintenance-shield]
 [![GitHub Activity][commits-shield]][commits]
 
-
 ![Victoria Metrics in the Home Assistant](images/screenshot.png)
 
 ## About

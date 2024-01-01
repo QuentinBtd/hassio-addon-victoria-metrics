@@ -120,7 +120,6 @@ more severe level, e.g., `WARN` also shows `INFO` messages. By default,
 the `log_level` is set to `INFO`, which is the recommended setting unless
 you are troubleshooting.
 
-
 ### Option: `env_vars`
 
 This option allows you to tweak every aspect of Victoria Metrics by setting
